@@ -1,3 +1,6 @@
+//This is the main
+//More explaination about the code, can you find in GxViewer.cpp
+
 //--------------------------------------------------------------------------------
 /**
 \file     main.cpp
@@ -19,12 +22,14 @@ int main(int argc, char *argv[])
     //Set Qt window style
     //QApplication::setStyle("windows");   // or windows etc.
 
+	//Create a QApplication
     CGxViewer w;
 
     QFont font = w.font();
     font.setPointSize(10);
     w.setFont(font);
 
+	//Show object
     w.show();
 
     return a.exec();

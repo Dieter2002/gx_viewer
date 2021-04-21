@@ -1,3 +1,6 @@
+//This code creates the UI screen like in the image
+//We have added a extra camsource and 1 safe button to safe image's from bot cam sources
+
 //--------------------------------------------------------------------------------
 /**
 \file     GxViewer.cpp
@@ -61,6 +64,8 @@ CGxViewer::CGxViewer(QWidget *parent) :
       m_pobjShowImgTimer2(NULL),
       m_pobjShowFrameRateTimer2(NULL)
 {
+	//Set all the ui
+	
     ui->setupUi(this);
 
     this->__SetSystemIcon();
@@ -269,6 +274,8 @@ void CGxViewer::DisableUI()
 \return void
 */
 //----------------------------------------------------------------------------------
+
+//We have added 1 more DeviceList, OpenDevice, CloseDevice, StartAcquisition, StopAcquisition
 void CGxViewer::UpdateUI()
 {
     ui->UpdateDeviceList->setEnabled(!m_bOpen);
@@ -607,6 +614,7 @@ void CGxViewer::UpdateDeviceList()
 \return
 */
 //----------------------------------------------------------------------------------
+// Show all files that were connected
 void CGxViewer::on_UpdateDeviceList_clicked()
 {
     QString szDeviceDisplayName;
@@ -650,6 +658,7 @@ void CGxViewer::on_UpdateDeviceList_clicked()
 \return void
 */
 //----------------------------------------------------------------------------------
+// Open the camera
 void CGxViewer::OpenDevice()
 {
     GX_STATUS emStatus = GX_STATUS_SUCCESS;
@@ -832,6 +841,7 @@ void CGxViewer::ShowDeviceInfo()
 \               false: Setting fail
 */
 //----------------------------------------------------------------------------------
+// Set all the specs right corresponding to the cam source
 bool CGxViewer::SetAcquisitionBufferNum()
 {
     GX_STATUS emStatus = GX_STATUS_SUCCESS;
@@ -1167,7 +1177,8 @@ void CGxViewer::slotShowImage()
     {
         return;
     }
-
+	
+	//Safe image to drive
     if (m_bSaveImage)
     {
         // Deep copy
@@ -1193,6 +1204,10 @@ void CGxViewer::slotShowImage()
 
     return;
 }
+
+//Handling multiple camera's
+//  
+
 
 //----------------------------------------------------------------------------------
 /**
@@ -1435,6 +1450,7 @@ bool CGxViewer::SetAcquisitionBufferNum2()
 \return void
 */
 //----------------------------------------------------------------------------------
+// Get all the data about the cam
 void CGxViewer::GetDeviceInitParam2()
 {
     GX_STATUS emStatus2 = GX_STATUS_SUCCESS;
@@ -1720,6 +1736,8 @@ void CGxViewer::slotShowImage2()
         return;
     }
 
+
+	//Safe the image to drive
     if (m_bSaveImage2)
     {
         // Deep copy
